@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
         const { id } = developers[i];
         const avatarUrl = developers[i].avatar_url;
         const result = { id, avatar_url: avatarUrl };
-        dev.push(result);
+        if (id !== ' ' && avatarUrl !== ' ') dev.push(result);
     }
     res.status(200).send(dev);
 });
@@ -41,46 +41,47 @@ router.post('/', (req, res) => {
     let location;
     let email;
     let bio;
-
-    axios(`https://api.github.com/users/${githubId}`)
-        .then((response) => {
-            Object.keys(response.data).forEach((key) => {
-                req.body[key] = response.data[key];
-                id = req.body.login;
-                avatarUrl = req.body.avatar_url;
-                name = req.body.name;
-                company = req.body.company;
-                blog = req.body.blog;
-                location = req.body.location;
-                email = req.body.email;
-                bio = req.body.bio;
+    if (!developers.some((x) => x.id === id)) {
+        axios(`https://api.github.com/users/${githubId}`)
+            .then((response) => {
+                Object.keys(response.data).forEach((key) => {
+                    req.body[key] = response.data[key];
+                    id = req.body.login;
+                    avatarUrl = req.body.avatar_url;
+                    name = req.body.name;
+                    company = req.body.company;
+                    blog = req.body.blog;
+                    location = req.body.location;
+                    email = req.body.email;
+                    bio = req.body.bio;
+                });
+                developers.push({
+                    id,
+                    avatar_url: avatarUrl,
+                    name,
+                    company,
+                    blog,
+                    location,
+                    email,
+                    bio,
+                    github_id: id,
+                    linkedin_id: linkedinId,
+                    codechef_id: codechefId,
+                    hackerrank_id: hackerrankId,
+                    twitter_id: twitterId,
+                    medium_id: mediumId,
+                });
+                res.statusMessage = 'User Created';
+                res.status(201).send({
+                    id,
+                });
+            })
+            .catch(() => {
+                res.status(404).send({
+                    error: 'GitHub username is invalid',
+                });
             });
-            developers.push({
-                id,
-                avatar_url: avatarUrl,
-                name,
-                company,
-                blog,
-                location,
-                email,
-                bio,
-                github_id: id,
-                linkedin_id: linkedinId,
-                codechef_id: codechefId,
-                hackerrank_id: hackerrankId,
-                twitter_id: twitterId,
-                medium_id: mediumId,
-            });
-            res.statusMessage = 'User Created';
-            res.status(201).send({
-                id,
-            });
-        })
-        .catch(() => {
-            res.status(404).send({
-                error: 'GitHub username is invalid',
-            });
-        });
+    }
 });
 
 router.get('/:id', (req, res) => {
