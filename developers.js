@@ -7,21 +7,13 @@ const router = express.Router();
 
 const developers = [];
 
-function countId(arr) {
-    let occurs = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if ('avatar_url' in arr[i]) occurs++;
-    }
-    return occurs;
-}
-
 router.get('/', (req, res) => {
     const dev = [];
     for (let i = 0; i < developers.length; i++) {
         const { id } = developers[i];
         const avatarUrl = developers[i].avatar_url;
         const result = { id, avatar_url: avatarUrl };
-        if (id !== ' ' && avatarUrl !== ' ') dev.push(result);
+        dev.push(result);
     }
     res.status(200).send(dev);
 });
@@ -41,10 +33,17 @@ router.post('/', (req, res) => {
     let location;
     let email;
     let bio;
-    axios(`https://api.github.com/users/${githubId}`)
-        .then((response) => {
-            Object.keys(response.data).forEach((key) => {
-                req.body[key] = response.data[key];
+    let htmlUrl;
+    let description;
+    let updatedAt;
+    let repos = {};
+    const reposList = [];
+    const promiseUser = axios(`https://api.github.com/users/${githubId}`);
+    const promiseRepos = axios(`https://api.github.com/users/${githubId}/repos`);
+    Promise.all([promiseUser, promiseRepos])
+        .then((responses) => {
+            Object.keys(responses[0].data).forEach((key) => {
+                req.body[key] = responses[0].data[key];
                 id = req.body.login;
                 avatarUrl = req.body.avatar_url;
                 name = req.body.name;
@@ -54,22 +53,41 @@ router.post('/', (req, res) => {
                 email = req.body.email;
                 bio = req.body.bio;
             });
-            developers.push({
-                id,
-                avatar_url: avatarUrl,
-                name,
-                company,
-                blog,
-                location,
-                email,
-                bio,
-                github_id: id,
-                linkedin_id: linkedinId,
-                codechef_id: codechefId,
-                hackerrank_id: hackerrankId,
-                twitter_id: twitterId,
-                medium_id: mediumId,
-            });
+
+            for (let i = 0; i < responses[1].data.length; i++) {
+                name = responses[1].data[i].name;
+                htmlUrl = responses[1].data[i].html_url;
+                description = responses[1].data[i].description;
+                updatedAt = responses[1].data[i].updated_at;
+                repos = {
+                    name,
+                    html_url: htmlUrl,
+                    description,
+                    updated_at: updatedAt,
+                };
+                reposList.push(repos);
+            }
+
+            const alreadyId = developers.some((x) => x.id === id);
+            if (!alreadyId) {
+                developers.push({
+                    id,
+                    avatar_url: avatarUrl,
+                    name,
+                    company,
+                    blog,
+                    location,
+                    email,
+                    bio,
+                    github_id: id,
+                    linkedin_id: linkedinId,
+                    codechef_id: codechefId,
+                    hackerrank_id: hackerrankId,
+                    twitter_id: twitterId,
+                    medium_id: mediumId,
+                    repos: reposList,
+                });
+            }
             res.statusMessage = 'User Created';
             res.status(201).send({
                 id,
@@ -84,41 +102,10 @@ router.post('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-    let name;
-    let htmlUrl;
-    let description;
-    let updatedAt;
-    let repos = {};
-    const reposList = [];
     if (developers.some((x) => x.id === id)) {
-        axios(`https://api.github.com/users/${id}/repos`).then((response) => {
-            for (let i = 0; i < response.data.length; i++) {
-                name = response.data[i].name;
-                htmlUrl = response.data[i].html_url;
-                description = response.data[i].description;
-                updatedAt = response.data[i].updated_at;
-                repos = {
-                    name,
-                    html_url: htmlUrl,
-                    description,
-                    updated_at: updatedAt,
-                };
-                reposList.push(repos);
-            }
-
-            for (let i = 0; i < 2 * countId(developers); i++) {
-                if (developers[i].id === id) {
-                    developers.splice(i + 1, 0, { repos: reposList });
-                    const obj1 = developers[i];
-                    const obj2 = developers[i + 1];
-                    const results = { ...obj1, ...obj2 };
-                    developers[i] = results;
-                    res.statusMessage = 'Valid User';
-                    res.status(200).send(developers[i]);
-                    break;
-                }
-            }
-        });
+        const requiredId = developers.findIndex((a) => a.id === id);
+        res.statusMessage = 'Valid User';
+        res.status(200).send(developers[requiredId]);
     } else {
         res.status(404).send({
             error: 'User does not exist',
