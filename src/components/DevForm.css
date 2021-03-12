@@ -1,0 +1,61 @@
+.CompanyIcon {
+  height: 24px;
+}
+
+h2 {
+  font-size: 32px;
+  margin: 50px 0 50px 50px;
+}
+
+hr {
+  max-width: calc(100vw - 60px);
+  margin-bottom: 50px;
+}
+
+.BottomLine {
+  margin-top: 100px;
+}
+
+label {
+  font-size: 24px;
+  margin-left: 10px;
+  padding-bottom: 20px;
+}
+
+input {
+  height: 50px;
+  width: 600px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.LabelInput {
+  margin-left: 80px;
+}
+
+.Buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.SubmitBtn {
+  font-size: 24px;
+  background-color: #7c639f;
+  color: #fff;
+  height: 50px;
+  width: 175px;
+  border-radius: 10px;
+  margin: 0 50px 50px 70px;
+  border: none;
+  cursor: pointer;
+}
+
+.CancelBtn {
+  font-size: 24px;
+  background-color: #fff;
+  height: 50px;
+  width: 175px;
+  cursor: pointer;
+  border: none;
+}

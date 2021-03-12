@@ -1,0 +1,20 @@
+.HeaderContainer {
+  background-color: #3f3d56;
+  font-size: 72px;
+  color: #fff;
+  height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 100px;
+  justify-items: center;
+  align-items: center;
+}
+
+.HeaderText {
+  margin-left: 100px;
+}
+
+.HeaderImg {
+  width: 600px;
+  height: 500px;
+}

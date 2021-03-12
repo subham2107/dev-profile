@@ -88,7 +88,6 @@ router.post('/', (req, res) => {
                     repos: reposList,
                 });
             }
-            res.statusMessage = 'User Created';
             res.status(201).send({
                 id,
             });
@@ -104,7 +103,6 @@ router.get('/:id', (req, res) => {
     const { id } = req.params;
     if (developers.some((x) => x.id === id)) {
         const requiredId = developers.findIndex((a) => a.id === id);
-        res.statusMessage = 'Valid User';
         res.status(200).send(developers[requiredId]);
     } else {
         res.status(404).send({
@@ -119,7 +117,6 @@ router.delete('/:id', (req, res) => {
         developers.findIndex((a) => a.id === id),
         1,
     );
-    res.statusMessage = 'Deleted';
     res.status(204).send();
 });
 
