@@ -9,29 +9,32 @@ import DevProfile from './DevProfile';
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            id: '',
+            avatar_url: ''
+        };
     }
 
-    // componentDidMount() {
-    //     fetch(`/api/developers/`)
-    //     .then(response => response.json())
-    //     .then(response => {
-    //         this.setState({avatar_url: response.avatar_url});
-    //         this.setState({id: response.id});
-    //        // this.setState({repos: response.repos});
-    //     });
-    // }
+    componentDidMount() {
+        fetch('/api/developers')
+        .then(response => response.json())
+        .then(response => {
+            this.setState({avatar_url: response.avatar_url});
+            this.setState({id: response.id});
+            console.log(`${response.id}`);
+        console.log(`${response.avatar_url}`);
+        });
+    }
 
-    // onChange = (event) => {
-    //     this.setState({ value: event.target.value });
-    // };
-
-    // onClick = () => {
-    //     window.location = `/developers/${this.state.id}`;
-    // };
+    
+    onArrowClick = () => {
+        window.location = `/developers/${this.state.id}`;
+    };
 
     render() {
-        //const image = `${this.state.avatar_url}`;
+        const image = `${this.state.avatar_url}`;
+        console.log(`${this.state.id}`);
+        console.log(`${this.state.avatar_url}`);
         return (
             <div class="homeContainer">
                 <Header />
@@ -39,8 +42,7 @@ class HomePage extends React.Component {
                 <hr></hr>
                 <SearchBar />
                 <div>
-                {/* <img className="idIcon" src={image}></img> {(this.state.id)} <img className="arrowIcon" onClick={()=> window.location = `/developers/${this.state.id}`}src='/images/north_east-24px.svg'></img>
-                */}
+                <img className="idIcon" src={image}></img> {(this.state.id)} <img className="arrowIcon" style={{cursor: 'pointer'}} onClick={this.onArrowClick} src='/images/north_east-24px.svg'></img>
                 </div>
                 <hr></hr>
                 <h3>Could not find what you were looking for?</h3>
