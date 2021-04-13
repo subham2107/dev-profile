@@ -19,10 +19,12 @@ class HomePage extends React.Component {
         fetch('/api/developers')
         .then(response => response.json())
         .then(response => {
-            this.setState({avatar_url: response.avatar_url});
-            this.setState({id: response.id});
-            console.log(`${response.id}`);
-        console.log(`${response.avatar_url}`);
+            //console.log(response[0].id);
+
+            this.setState({avatar_url: response[0].avatar_url});
+            this.setState({id: response[0].id});
+            //console.log(`${response[0].id}`);
+            //console.log(`${response[0].avatar_url}`);
         });
     }
 
@@ -33,8 +35,8 @@ class HomePage extends React.Component {
 
     render() {
         const image = `${this.state.avatar_url}`;
-        console.log(`${this.state.id}`);
-        console.log(`${this.state.avatar_url}`);
+        //console.log(`${this.state.id}`);
+        //console.log(`${this.state.avatar_url}`);
         return (
             <div class="homeContainer">
                 <Header />

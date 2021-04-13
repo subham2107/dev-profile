@@ -34,7 +34,7 @@ class DevInfoInput extends React.Component {
             <div className="devInfoInputContainer">
                 <div>
                     <FormPopup isClicked={isClicked} />
-                    {button};
+                    {button}
                 </div>
             </div>
         );

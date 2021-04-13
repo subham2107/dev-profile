@@ -27,7 +27,8 @@ router.post('/', (req, res) => {
     const mediumId = req.body.medium_id;
     let id;
     let avatarUrl;
-    let name;
+    let myName;
+    let repoName;
     let company;
     let blog;
     let location;
@@ -46,7 +47,7 @@ router.post('/', (req, res) => {
                 req.body[key] = responses[0].data[key];
                 id = req.body.login;
                 avatarUrl = req.body.avatar_url;
-                name = req.body.name;
+                myName = req.body.name;
                 company = req.body.company;
                 blog = req.body.blog;
                 location = req.body.location;
@@ -55,12 +56,12 @@ router.post('/', (req, res) => {
             });
 
             for (let i = 0; i < responses[1].data.length; i++) {
-                name = responses[1].data[i].name;
+                repoName = responses[1].data[i].name;
                 htmlUrl = responses[1].data[i].html_url;
                 description = responses[1].data[i].description;
                 updatedAt = responses[1].data[i].updated_at;
                 repos = {
-                    name,
+                    name: repoName,
                     html_url: htmlUrl,
                     description,
                     updated_at: updatedAt,
@@ -73,7 +74,7 @@ router.post('/', (req, res) => {
                 developers.push({
                     id,
                     avatar_url: avatarUrl,
-                    name,
+                    myName,
                     company,
                     blog,
                     location,
