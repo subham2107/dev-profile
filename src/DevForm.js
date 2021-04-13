@@ -23,14 +23,16 @@ onInput = event => {
     submitClick = (e) => {
         e.preventDefault();
         const { github, medium, linkedin, codechef, hackerrank, twitter, message } = this.state;
-        fetch('/api/developers/', {
+        fetch('/api/developers', {
             method: 'POST',
-            body: JSON.stringify({ github, medium, linkedin, codechef, hackerrank, twitter, message }),
+            body: JSON.stringify({ github_id:github, medium_id:medium, linkedin_id:linkedin, codechef_id:codechef, hackerrank_id:hackerrank, twitter_id:twitter}),
             headers: {
               'Content-type': 'application/json; charset=UTF-8'
             }
           });
           window.location = '/';
+          console.log('hi');
+          window.alert('hello')
         
     }
 

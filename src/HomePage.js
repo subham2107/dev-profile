@@ -12,26 +12,26 @@ class HomePage extends React.Component {
         this.state = {};
     }
 
-    componentDidMount() {
-        fetch(`/api/developers/`)
-        .then(response => response.json())
-        .then(response => {
-            this.setState({avatar_url: response.avatar_url});
-            this.setState({id: response.id});
-           // this.setState({repos: response.repos});
-        });
-    }
+    // componentDidMount() {
+    //     fetch(`/api/developers/`)
+    //     .then(response => response.json())
+    //     .then(response => {
+    //         this.setState({avatar_url: response.avatar_url});
+    //         this.setState({id: response.id});
+    //        // this.setState({repos: response.repos});
+    //     });
+    // }
 
-    onChange = (event) => {
-        this.setState({ value: event.target.value });
-    };
+    // onChange = (event) => {
+    //     this.setState({ value: event.target.value });
+    // };
 
-    onClick = () => {
-        window.location = `/developers/${this.state.id}`;
-    };
+    // onClick = () => {
+    //     window.location = `/developers/${this.state.id}`;
+    // };
 
     render() {
-        const image = `${this.state.avatar_url}`;
+        //const image = `${this.state.avatar_url}`;
         return (
             <div class="homeContainer">
                 <Header />
@@ -39,16 +39,13 @@ class HomePage extends React.Component {
                 <hr></hr>
                 <SearchBar />
                 <div>
-                <img className="idIcon" src={image}></img> {(this.state.id)} <img className="arrowIcon" onClick={()=> window.location = `/developers/${this.state.id}`}src='/images/north_east-24px.svg'></img>
-               
+                {/* <img className="idIcon" src={image}></img> {(this.state.id)} <img className="arrowIcon" onClick={()=> window.location = `/developers/${this.state.id}`}src='/images/north_east-24px.svg'></img>
+                */}
                 </div>
                 <hr></hr>
                 <h3>Could not find what you were looking for?</h3>
                 <DevInfoInput />
-                <Footer />
-                 <label>Enter developer id: </label>
-                <input onChange={this.onChange} value={this.state.value} />
-                <button onClick={this.onClick}>Submit</button> 
+                <Footer /> 
             </div>
         );
     }
