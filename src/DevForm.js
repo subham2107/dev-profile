@@ -16,26 +16,42 @@ class DevForm extends React.Component {
     }
 }
 
-onInput = event => {
-    this.setState({ [event.target.name]: event.target.value });
+   onInput = event => {
+        this.setState({ [event.target.name]: event.target.value });
   }
+
+  cancelClick =(e) => {
+    e.preventDefault();
+    window.location='/'
+  }
+
+
 
     submitClick = (e) => {
         e.preventDefault();
         const { github, medium, linkedin, codechef, hackerrank, twitter, message } = this.state;
         fetch('/api/developers', {
             method: 'POST',
-            body: JSON.stringify({ github_id:github, medium_id:medium, linkedin_id:linkedin, codechef_id:codechef, hackerrank_id:hackerrank, twitter_id:twitter}),
+            body: JSON.stringify({ github_id:github, medium_id:medium, linkedin_id:linkedin, codechef_id:codechef, hackerrank_id:hackerrank, twitter_id:twitter, message}),
             headers: {
               'Content-type': 'application/json; charset=UTF-8'
             }
+          }
+          ).then((response) => {
+            if (response.ok) {
+              window.location = '/'
+            }
+            return response.json().then((body) => {
+                throw new Error(body.error)
+            })
+          })
+          .catch((error) => {
+            this.errorMessage = error.message
+            console.log(this.errorMessage);
+            this.setState({message: this.errorMessage});
           });
-          window.location = '/';
-          console.log('hi');
-          window.alert('hello')
-        
-    }
-
+        }
+    
 
     render(){
 
@@ -57,6 +73,7 @@ onInput = event => {
                     onInput={this.onInput} 
                     value={this.state.github}
                 />
+                {this.state.message ? <h4 style={{ color: 'red' ,marginLeft: '80px',marginTop: '0'}}>Enter valid Github Id</h4> : null}
                 
                 <div className="labelInput">
                     <img
@@ -116,7 +133,7 @@ onInput = event => {
                     value={this.state.medium} type="text" />
                 <hr className="bottomLine"></hr>
                 <div className="buttons">
-                    <button className="cancelBtn" onClick={() => window.location='/'}>
+                    <button className="cancelBtn" onClick={this.cancelClick}>
                         Cancel
                     </button>
                     <button className="submitBtn" onClick={this.submitClick}>
