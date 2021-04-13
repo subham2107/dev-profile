@@ -1,53 +1,42 @@
 import React from 'react';
 import './DevForm.css';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
 
-function DevForm() {
-    const [form, setForm] = React.useState({
+
+class DevForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
         github: '',
         medium: '',
         linkedin: '',
         codechef: '',
         hackerrank: '',
         twitter: '',
-        message: '',
-    });
+        message: ''
+    }
+}
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setForm((prevState) => ({
-            ...prevState,
-            [name]: value,
-            message: '',
-        }));
-    };
-    const history = useHistory();
+onInput = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
 
-    const submitClick = (e) => {
+    submitClick = (e) => {
         e.preventDefault();
-        if (form.github) {
-            axios
-                .post('/api/developers', {
-                    github_id: form.github,
-                    medium: form.medium,
-                    linkedin: form.linkedin,
-                    codechef: form.codechef,
-                    hackerrank: form.hackerrank,
-                    twitter: form.twitter,
-                })
-                .then(() => {
-                    // console.log(res);
-                    history.push('/');
-                })
-                .catch((error) => {
-                    setForm((prevState) => ({
-                        ...prevState,
-                        message: error.message,
-                    }));
-                });
-        }
-    };
+        const { github, medium, linkedin, codechef, hackerrank, twitter, message } = this.state;
+        fetch('/api/developers/', {
+            method: 'POST',
+            body: JSON.stringify({ github, medium, linkedin, codechef, hackerrank, twitter, message }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8'
+            }
+          });
+          window.location = '/';
+        
+    }
+
+
+    render(){
+
     return (
         <div class="formContainer">
             <form>
@@ -63,10 +52,10 @@ function DevForm() {
                     required="required"
                     placeholder="subham2107"
                     name="github"
-                    value={form.github}
-                    onChange={handleChange}
+                    onInput={this.onInput} 
+                    value={this.state.github}
                 />
-                {form.message ? <h6 style={{ color: 'red' }}>Enter valid github id</h6> : null}
+                
                 <div className="labelInput">
                     <img
                         className="companyIcon"
@@ -79,8 +68,8 @@ function DevForm() {
                     className="labelInput"
                     type="text"
                     name="linkedin"
-                    value={form.linkedin}
-                    onChange={handleChange}
+                    onInput={this.onInput} 
+                    value={this.state.linkedin}
                 />
                 <div className="labelInput">
                     <img className="companyIcon" src={'images/codechef-1324440139527402917_32.png'} alt="icon" />
@@ -89,8 +78,8 @@ function DevForm() {
                 <input
                     className="labelInput"
                     name="codechef"
-                    value={form.codechef}
-                    onChange={handleChange}
+                    onInput={this.onInput} 
+                    value={this.state.codechef}
                     type="text"
                 />
                 <div className="labelInput">
@@ -104,8 +93,8 @@ function DevForm() {
                 <input
                     className="labelInput"
                     name="hackerrank"
-                    value={form.hackerrank}
-                    onChange={handleChange}
+                    onInput={this.onInput} 
+                    value={this.state.hackerrank}
                     type="text"
                 />
                 <div className="labelInput">
@@ -116,24 +105,26 @@ function DevForm() {
                     />
                     <label>Twitter</label>
                 </div>
-                <input className="labelInput" name="twitter" value={form.twitter} onChange={handleChange} type="text" />
+                <input className="labelInput" name="twitter" onInput={this.onInput} value={this.state.twitter} type="text" />
                 <div className="labelInput">
                     <img className="companyIcon" src={'images/iconfinder_Circled_Medium_svg5_5279113.png'} alt="icon" />
                     <label>Medium</label>
                 </div>
-                <input className="labelInput" name="medium" value={form.medium} onChange={handleChange} type="text" />
+                <input className="labelInput" name="medium" onInput={this.onInput} 
+                    value={this.state.medium} type="text" />
                 <hr className="bottomLine"></hr>
                 <div className="buttons">
                     <button className="cancelBtn" onClick={() => window.location='/'}>
                         Cancel
                     </button>
-                    <button className="submitBtn" onClick={submitClick}>
+                    <button className="submitBtn" onClick={this.submitClick}>
                         Submit
                     </button>
                 </div>
             </form>
         </div>
     );
+}
 }
 
 export default DevForm;
