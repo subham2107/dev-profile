@@ -1,4 +1,4 @@
-.SearchBar {
+.searchBar {
   background-color: #d0cde1;
   height: 80px;
   width: 800px;
@@ -9,7 +9,7 @@
   display: flex;
 }
 
-.SearchInput {
+.searchInput {
   padding-left: 10px;
   width: 700px;
   height: 50px;
@@ -19,11 +19,12 @@
   border: none;
 }
 
-.SearchIcon {
+.searchIcon {
   height: 50px;
   width: 50px;
+  cursor: pointer;
 }
 
-.SearchIconWrapper {
+.searchIconWrapper {
   padding-top: 15px;
 }

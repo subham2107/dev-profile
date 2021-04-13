@@ -1,39 +1,41 @@
-h2 {
+.navbar h2 {
   font-size: 24px;
   color: #fff;
   cursor: pointer;
+  font-weight: normal;
 }
 
-h3 {
+.devGithubInfo h3 {
   font-size: 48px;
+  font-weight: normal;
 }
 
-hr {
+.devGithubInfo hr {
   max-width: calc(100vw - 60px);
 }
 
-.Navbar {
+.navbar {
   background-color: #3f3d56;
   height: 80px;
   display: flex;
 }
 
-.HeaderOne {
+.headerOne {
   margin-left: 30px;
   margin-right: 910px;
 }
 
-.BigAvatar {
+.bigAvatar {
   height: 400px;
   width: 400px;
 }
 
-.DevGithubInfo {
+.devGithubInfo {
   display: flex;
   background-color: #cdcfd1;
 }
 
-.RepoList {
+.repoList {
   font-size: 56px;
   text-align: center;
 }

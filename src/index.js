@@ -1,14 +1,23 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import DevProfile from './DevProfile';
+import HomePage from './HomePage';
 import './index.css';
-// import Footer from './components/Footer';
-// import Header from './components/Header';
-// import DevInfoInput from './components/DevInfoInput';
-// import SearchBar from './components/SearchBar';
-// import MiniAvatar from './components/MiniAvatar';
-// import DevForm from './components/DevForm';
-import DevProfile from './components/DevProfile';
 
-const devprofile = <DevProfile />;
+function App() {
+  return (
+    <Router>
+        <Switch>
+          <Route exact path="/developers/:developerId" component={DevProfile} />
+          <Route exact path="/" component={HomePage} />
+        </Switch>
+    </Router>
+  );
+}
 
-ReactDOM.render(devprofile, document.getElementById('root'));
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+);

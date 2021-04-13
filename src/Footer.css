@@ -1,0 +1,15 @@
+.footerContainer {
+  background-color: #3f3d56;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerHeader {
+  font-size: 24px;
+  color: #fff;
+  font-weight: normal;
+}
+
+

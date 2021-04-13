@@ -1,28 +1,34 @@
-.CompanyIcon {
+.companyIcon {
   height: 24px;
 }
 
-h2 {
-  font-size: 32px;
-  margin: 50px 0 50px 50px;
+.formContainer {
+  border: solid 1px;
+  width: 1200px;
 }
 
-hr {
-  max-width: calc(100vw - 60px);
+.formContainer h2{
+  font-size: 32px;
+  margin: 50px 0 50px 50px;
+  
+}
+
+.formContainer hr {
+  max-width: calc(100vw - 250px);
   margin-bottom: 50px;
 }
 
-.BottomLine {
+.bottomLine {
   margin-top: 100px;
 }
 
-label {
+.formContainer label{
   font-size: 24px;
   margin-left: 10px;
   padding-bottom: 20px;
 }
 
-input {
+.formContainer input{
   height: 50px;
   width: 600px;
   border-radius: 5px;
@@ -30,16 +36,16 @@ input {
   margin-top: 20px;
 }
 
-.LabelInput {
+.labelInput {
   margin-left: 80px;
 }
 
-.Buttons {
+.buttons {
   display: flex;
   justify-content: flex-end;
 }
 
-.SubmitBtn {
+.submitBtn {
   font-size: 24px;
   background-color: #7c639f;
   color: #fff;
@@ -51,7 +57,7 @@ input {
   cursor: pointer;
 }
 
-.CancelBtn {
+.cancelBtn {
   font-size: 24px;
   background-color: #fff;
   height: 50px;
@@ -59,3 +65,13 @@ input {
   cursor: pointer;
   border: none;
 }
+
+/*
+.formContainer { 
+  background-color: #fff;
+  margin: 10% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 100%; 
+}
+*/

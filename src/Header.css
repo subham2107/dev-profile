@@ -1,4 +1,4 @@
-.HeaderContainer {
+.headerContainer {
   background-color: #3f3d56;
   font-size: 72px;
   color: #fff;
@@ -10,11 +10,12 @@
   align-items: center;
 }
 
-.HeaderText {
+.headerText {
   margin-left: 100px;
 }
 
-.HeaderImg {
+.headerImg {
   width: 600px;
   height: 500px;
+  margin-right: 50px;
 }

@@ -1,0 +1,40 @@
+.homeContainer h5{
+  font-size: 56px;
+  color: #3f3d56;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-weight: normal;
+}
+
+.homeContainer h3{
+  font-size: 36px;
+  color: #3f3d56;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: normal;
+}
+
+.homeContainer hr {
+  max-width: calc(100vw - 100px);
+}
+
+.idIcon {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin-right: 50px;
+}
+
+/* .homeContainer {
+    
+  z-index: 1; 
+   
+  left: 0;
+  top: 0;
+  width: 100%; 
+  height: 100%; 
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
+} */
