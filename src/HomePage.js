@@ -5,7 +5,7 @@ import SearchBar from './SearchBar';
 import DevInfoInput from './DevInfoInput';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
-import DevProfile from './DevProfile';
+
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -45,15 +45,18 @@ class HomePage extends React.Component {
                 <h5>Explore developer profiles</h5>
                 <hr></hr>
                 <SearchBar />
-                {(this.state.dev).map((eachDev) => (
                 <div class="homePageDevs">
-                <div><img className="idIcon" src={`${eachDev.avatar_url}`}></img> {(eachDev.id)} 
-                <Link to={`/developers/${eachDev.id}`}>
+                {(this.state.dev).map((eachDev) => (
+                <span className='eachDevSpan'>
+                <img className="idIcon" src={`${eachDev.avatar_url}`}></img> 
+                <span className='devId' >{(eachDev.id)} </span>
+                <Link  to={`/developers/${eachDev.id}`}>
                 <img className="arrowIcon" style={{cursor: 'pointer'}} src='/images/north_east-24px.svg'></img>
-                </Link></div>
-                </div>
+                </Link>
+                </span>
                 ))}
-                <hr></hr>
+                </div>
+                <hr style={{marginTop: '100px'}}></hr>
                 <h3>Could not find what you were looking for?</h3>
                 <DevInfoInput />
                 <Footer /> 

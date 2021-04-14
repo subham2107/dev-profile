@@ -7,11 +7,28 @@
   font-weight: normal;
 }
 
+.eachDevSpan {
+  display: flex;
+  width: 400px;
+  align-items: center;
+  
+}
+
+
+.devId {
+  font-size: 36px;
+  color: #9F8E63;
+  margin-right: 20px;
+  margin-left: 50px;
+  
+}
+
 .homePageDevs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
+  row-gap: 100px;
 }
 
 .homeContainer h3{
@@ -31,7 +48,8 @@
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  margin-right: 50px;
+  
+  
 }
 
 /* .homeContainer {
