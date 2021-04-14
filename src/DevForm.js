@@ -61,7 +61,7 @@ class DevForm extends React.Component {
                 <h2>Add developer profile</h2>
                 <hr></hr>
                 <div className="labelInput">
-                    <img className="companyIcon" src={'images/iconfinder_github_317712.png'} alt="icon" />
+                    <img className="companyIcon" src={'/images/iconfinder_github_317712.png'} alt="icon" />
                     <label>Github*</label>
                 </div>
                 <input
@@ -73,12 +73,12 @@ class DevForm extends React.Component {
                     onInput={this.onInput} 
                     value={this.state.github}
                 />
-                {this.state.message ? <h4 style={{ color: 'red' ,marginLeft: '80px',marginTop: '0'}}>Enter valid Github Id</h4> : null}
+                {this.state.message ? <h4 style={{ color: 'red' ,marginLeft: '80px',marginTop: '0'}}>Please enter valid Github Id</h4> : null}
                 
                 <div className="labelInput">
                     <img
                         className="companyIcon"
-                        src={'images/iconfinder_2018_social_media_popular_app_logo_linkedin_3225190.png'}
+                        src={'/images/iconfinder_2018_social_media_popular_app_logo_linkedin_3225190.png'}
                         alt="icon"
                     />
                     <label>LinkedIn</label>
@@ -91,7 +91,7 @@ class DevForm extends React.Component {
                     value={this.state.linkedin}
                 />
                 <div className="labelInput">
-                    <img className="companyIcon" src={'images/codechef-1324440139527402917_32.png'} alt="icon" />
+                    <img className="companyIcon" src={'/images/codechef-1324440139527402917_32.png'} alt="icon" />
                     <label>Codechef</label>
                 </div>
                 <input
@@ -104,7 +104,7 @@ class DevForm extends React.Component {
                 <div className="labelInput">
                     <img
                         className="companyIcon"
-                        src={'images/iconfinder_160_Hackerrank_logo_logos_4373234.png'}
+                        src={'/images/iconfinder_160_Hackerrank_logo_logos_4373234.png'}
                         alt="icon"
                     />
                     <label>Hackerrank</label>
@@ -119,14 +119,14 @@ class DevForm extends React.Component {
                 <div className="labelInput">
                     <img
                         className="companyIcon"
-                        src={'images/iconfinder_2018_social_media_popular_app_logo_twitter_3225183.png'}
+                        src={'/images/iconfinder_2018_social_media_popular_app_logo_twitter_3225183.png'}
                         alt="icon"
                     />
                     <label>Twitter</label>
                 </div>
                 <input className="labelInput" name="twitter" onInput={this.onInput} value={this.state.twitter} type="text" />
                 <div className="labelInput">
-                    <img className="companyIcon" src={'images/iconfinder_Circled_Medium_svg5_5279113.png'} alt="icon" />
+                    <img className="companyIcon" src={'/images/iconfinder_Circled_Medium_svg5_5279113.png'} alt="icon" />
                     <label>Medium</label>
                 </div>
                 <input className="labelInput" name="medium" onInput={this.onInput} 

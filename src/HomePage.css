@@ -7,6 +7,13 @@
   font-weight: normal;
 }
 
+.homePageDevs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+}
+
 .homeContainer h3{
   font-size: 36px;
   color: #3f3d56;
