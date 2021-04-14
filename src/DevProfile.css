@@ -5,13 +5,60 @@
   font-weight: normal;
 }
 
+.companyIcon1 {
+  font-size: 16px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.companyIcon2 {
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.repoContent {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.repoContent hr {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.repoName {
+  font-size: 36px;
+  color: #388bfd;
+}
+
+.repoDescription {
+  font-size: 32px;
+}
+
+.updatedOn {
+  color: #9F8E63;
+  margin-left: 20px;
+}
+
 .devIcons {
-  margin-left: 5px;
+  margin-bottom: 30px;
+}
+
+.gitAddInfo {
+  display: flex;
 }
 
 .devGithubInfo h3 {
   font-size: 48px;
   font-weight: normal;
+  margin-top: 100px;
+}
+
+.devGithubInfo h5 {
+  font-size: 24px;
+  font-weight: normal;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .devGithubInfo hr {
@@ -34,12 +81,16 @@
   height: 400px;
   width: 400px;
   border-radius: 50%;
-  margin-top: 5px;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 .devGithubInfo {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
   background-color: #cdcfd1;
+  column-gap: 0px;
 }
 
 .repoList {

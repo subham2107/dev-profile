@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import './DevProfile.css';
+//import dayjs from 'dayjs';
+// import moment from 'moment';
 
 class DevProfile extends React.Component {
     constructor(props) {
@@ -57,30 +59,32 @@ class DevProfile extends React.Component {
                     {this.state.twitter_id?<a href = {`https://twitter.com/${this.state.twitter_id}`} target="_blank"><img className="companyIcon" src={'/images/iconfinder_2018_social_media_popular_app_logo_twitter_3225183.png'} alt="icon"/></a>:null}
                     {this.state.email?<a href = {`mailto:${this.state.email}`} target="_blank"><img className="companyIcon" src={'/images/email-24px.svg'} alt="icon"/></a>:null}
                     </div>
-                    <div>
-                    <img className="companyIcon" src={'/images/location_on-24px.svg'} alt="icon"/>
-                    {this.state.location}
-                    <img className="companyIcon" src={'/images/business-24px.svg'} alt="icon"/>
-                    {this.state.company}
-                    <img className="companyIcon" src={'/images/insert_link-24px (1).svg'} alt="icon"/>
-                    {this.state.blog}
+                    <div className='gitAddInfo'>
+                    <img className="companyIcon2" src={'/images/location_on-24px.svg'} alt="icon"/>
+                    <span>{this.state.location}</span>
+                    <img className="companyIcon1" src={'/images/business-24px.svg'} alt="icon"/>
+                    <span>{this.state.company}</span>
+                    <img className="companyIcon1" src={'/images/insert_link-24px (1).svg'} alt="icon"/>
+                    <span>{this.state.blog}</span>
                     </div>
                 </div>
             </div>
             <div>
                 <h3 className="repoList">Github Repositories</h3>
             </div>
-            <hr></hr>
+            {this.state.repos?
+            <div className='repoContent'>
+            <hr ></hr>
             {(this.state.repos).map((eachRepo) => (
             <div>
-            {eachRepo.name} 
+            <span className='repoName'>{eachRepo.name} </span>
             <a href = {`${eachRepo.html_url}`} target="_blank"><img className="arrowIcon" style={{cursor: 'pointer'}} src='/images/north_east-24px.svg'></img></a>
-            Updated on {eachRepo.updated_at}
-            <br></br>
-            {eachRepo.description}
+            <span className='updatedOn'>Updated on {(new Date(eachRepo.updated_at)).toDateString()} </span>
+            <div className='repoDescription'>{eachRepo.description}</div>
             <hr></hr>
             </div>
             ))}
+            </div>:null}
             <Footer/>
         </div>
     );
