@@ -63,3 +63,22 @@
   overflow: auto; 
   background-color: rgba(0,0,0,0.4); 
 } */
+
+@media screen and (max-width: 411px) {
+  .homeContainer h5 {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  }
+
+  .devId{
+    font-size: 12px;
+    margin-bottom: 18px;
+  }
+
+  .idIcon {
+    height: 20px;
+    width: 20px;   
+  }
+  
+}

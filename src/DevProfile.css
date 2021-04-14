@@ -98,3 +98,9 @@
   text-align: center;
   font-weight: normal;
 }
+
+@media screen and (max-width: 411px) {
+  .devGithubInfo {
+    grid-template-columns: 1fr;
+  }
+}

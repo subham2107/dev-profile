@@ -19,3 +19,19 @@
   height: 500px;
   margin-right: 50px;
 }
+
+@media screen and (max-width: 411px) {
+  .headerContainer {
+  font-size: 36px;
+  grid-template-columns: 1fr;
+  }
+  .headerImg {
+    display: none;
+  }
+  .headerText {
+    margin: 0 auto;
+  }
+
+
+
+}
