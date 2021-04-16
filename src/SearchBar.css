@@ -25,6 +25,19 @@
   cursor: pointer;
 }
 
+.homePageDevs2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  row-gap: 100px;
+}
+
+.searchIcon :active {
+    display:none;
+  
+}
+
 .searchIconWrapper {
   padding-top: 15px;
 }

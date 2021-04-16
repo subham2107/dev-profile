@@ -1,6 +1,8 @@
 import React from 'react';
 import DevForm from './DevForm';
 import './DevInfoInput.css';
+import PureModal from 'react-pure-modal';
+import 'react-pure-modal/dist/react-pure-modal.min.css';
 
 function FormPopup(props) {
     const isClicked = props.isClicked;

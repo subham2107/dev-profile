@@ -5,6 +5,10 @@
   font-weight: normal;
 }
 
+.companyIcon0 {
+  height: 24px;
+}
+
 .companyIcon1 {
   font-size: 16px;
   margin-left: 20px;
@@ -14,6 +18,11 @@
 .companyIcon2 {
   font-size: 16px;
   margin-right: 20px;
+}
+
+.companyIcon3 {
+    height: 24px;
+    margin-left: 25px;
 }
 
 .repoContent {

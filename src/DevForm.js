@@ -1,5 +1,7 @@
 import React from 'react';
 import './DevForm.css';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 
 class DevForm extends React.Component {
@@ -18,7 +20,7 @@ class DevForm extends React.Component {
 
    onInput = event => {
         this.setState({ [event.target.name]: event.target.value });
-  }
+    }
 
   cancelClick =(e) => {
     e.preventDefault();
@@ -73,7 +75,7 @@ class DevForm extends React.Component {
                     onInput={this.onInput} 
                     value={this.state.github}
                 />
-                {this.state.message ? <h4 style={{ color: 'red' ,marginLeft: '80px',marginTop: '0'}}>Please enter valid Github Id</h4> : null}
+                
                 
                 <div className="labelInput">
                     <img
@@ -87,6 +89,7 @@ class DevForm extends React.Component {
                     className="labelInput"
                     type="text"
                     name="linkedin"
+                    placeholder="subham-mitra"
                     onInput={this.onInput} 
                     value={this.state.linkedin}
                 />
@@ -97,6 +100,7 @@ class DevForm extends React.Component {
                 <input
                     className="labelInput"
                     name="codechef"
+                    placeholder="subham2107"
                     onInput={this.onInput} 
                     value={this.state.codechef}
                     type="text"
@@ -112,6 +116,7 @@ class DevForm extends React.Component {
                 <input
                     className="labelInput"
                     name="hackerrank"
+                    placeholder="subham2107"
                     onInput={this.onInput} 
                     value={this.state.hackerrank}
                     type="text"
@@ -124,12 +129,12 @@ class DevForm extends React.Component {
                     />
                     <label>Twitter</label>
                 </div>
-                <input className="labelInput" name="twitter" onInput={this.onInput} value={this.state.twitter} type="text" />
+                <input className="labelInput" name="twitter" onInput={this.onInput} value={this.state.twitter} placeholder="subham2107" type="text" />
                 <div className="labelInput">
                     <img className="companyIcon" src={'/images/iconfinder_Circled_Medium_svg5_5279113.png'} alt="icon" />
                     <label>Medium</label>
                 </div>
-                <input className="labelInput" name="medium" onInput={this.onInput} 
+                <input className="labelInput" name="medium" onInput={this.onInput} placeholder="subham2107"
                     value={this.state.medium} type="text" />
                 <hr className="bottomLine"></hr>
                 <div className="buttons">

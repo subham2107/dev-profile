@@ -2,30 +2,11 @@ import React from 'react';
 import './HomePage.css';
 import './SearchBar.css';
 import Header from './Header';
+import SearchBar from './SearchBar';
 import DevInfoInput from './DevInfoInput';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 
-class SearchBar extends React.Component {
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     repos: [],
-        // };
-        //console.log(this.state.dev)
-    }
-    
-    render() {
-    return (
-        <div class="searchBar">
-            <input className="searchInput" type="text" placeholder="Search for username"></input>
-            <div className="searchIconWrapper">
-                <img className="searchIcon" src={'/images/search-24px.svg'} alt="searchIcon" />
-            </div>
-        </div>
-    );
-}
-}
 
 class HomePage extends React.Component {
     constructor(props) {
@@ -57,15 +38,14 @@ class HomePage extends React.Component {
 
 
     render() {
-
         if(this.state.dev.length>0){
         return (
             <div class="homeContainer">
                 <Header />
                 <h5>Explore developer profiles</h5>
                 <hr></hr>
-                <SearchBar />
-                <div class="homePageDevs">
+                <SearchBar/>
+                <div class="homePageDevs" >
                 {(this.state.dev).map((eachDev) => (
                 <span className='eachDevSpan'>
                 <img className="idIcon" src={`${eachDev.avatar_url}`}></img> 
