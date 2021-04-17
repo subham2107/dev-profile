@@ -75,8 +75,7 @@ class DevForm extends React.Component {
                     onInput={this.onInput} 
                     value={this.state.github}
                 />
-                
-                
+                {this.state.message ? <h4 style={{ color: 'red', marginLeft: '80px', marginTop: '0'}}>Please enter valid Github Id</h4> : null}   
                 <div className="labelInput">
                     <img
                         className="companyIcon"
