@@ -133,7 +133,7 @@ class DevForm extends React.Component {
                     <img className="companyIcon" src={'/images/iconfinder_Circled_Medium_svg5_5279113.png'} alt="icon" />
                     <label>Medium</label>
                 </div>
-                <input className="labelInput" name="medium" onInput={this.onInput} placeholder="subham2107"
+                <input className="labelInput" name="medium" onInput={this.onInput} placeholder="subham.mitra21"
                     value={this.state.medium} type="text" />
                 <hr className="bottomLine"></hr>
                 <div className="buttons">
