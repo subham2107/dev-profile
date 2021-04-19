@@ -22,7 +22,6 @@ class HomePage extends React.Component {
         fetch(`/api/developers/${event.target.value}`)
         .then(response => response.json())
         .then(response => {
-          console.log(response)
           this.setState({api_res_id: response.id});
           this.setState({api_res_avatar_url: response.avatar_url});
       });

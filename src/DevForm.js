@@ -49,7 +49,6 @@ class DevForm extends React.Component {
           })
           .catch((error) => {
             this.errorMessage = error.message
-            console.log(this.errorMessage);
             this.setState({message: this.errorMessage});
           });
         }
