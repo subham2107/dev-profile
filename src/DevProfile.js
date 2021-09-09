@@ -39,9 +39,13 @@ class DevProfile extends React.Component {
     return (
         <div>
             <div className="navbar">
-                <Link to='/' style={{ textDecoration: 'none' }}><h2 className="headerOne">The Developer Profile</h2></Link>
-                <Link to='/' style={{ textDecoration: 'none' }}><h2 className="headerTwo">All Developers</h2></Link>
-            </div>
+                <div className="headerOne">
+                    <Link to='/' style={{ textDecoration: 'none' }}><h2>The Developer Profile</h2></Link>
+                </div>
+                <div className="headerTwo">
+                    <Link to='/' style={{ textDecoration: 'none' }}><h2>All Developers</h2></Link>
+                </div>
+        </div>
             <div className="devGithubInfo">
                 <div>
                     <img className="bigAvatar" src={`${this.state.avatar_url}`} alt="avatar" />

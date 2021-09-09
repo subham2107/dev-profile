@@ -33,7 +33,7 @@ class HomePage extends React.Component {
         .then(response => {
 
         if(response.length>0) {
-            this.setState({dev: response});          
+            this.setState({dev: response});
         }
         else {
             this.setState({});

@@ -5,6 +5,14 @@
   font-weight: normal;
 }
 
+.navbar {
+  background-color: #3f3d56;
+  height: 80px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
 .companyIcon0 {
   height: 24px;
 }
@@ -74,17 +82,6 @@
   max-width: calc(100vw - 60px);
 }
 
-.navbar {
-  background-color: #3f3d56;
-  height: 80px;
-  display: flex;
-}
-
-.headerOne {
-  margin-left: 30px;
-  margin-right: 910px;
-}
-
 
 .bigAvatar {
   height: 400px;
@@ -98,8 +95,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: center;
+  align-content: center;
   background-color: #cdcfd1;
-  column-gap: 0px;
+  column-gap: 0;
 }
 
 .repoList {
@@ -108,8 +106,13 @@
   font-weight: normal;
 }
 
-@media screen and (max-width: 411px) {
+@media screen and (max-width: 1025px) {
   .devGithubInfo {
     grid-template-columns: 1fr;
+    min-height: 1000px;
+    max-height: 1000px;
+  }
+  .bigAvatar {
+    margin-bottom: 0;
   }
 }
