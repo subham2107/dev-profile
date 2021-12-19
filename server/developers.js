@@ -11,7 +11,7 @@ const developers = [{
     myName: 'Subham Mitra',
     company: null,
     blog: 'https://www.linkedin.com/in/subham-mitra/',
-    location: 'Kolkata, India',
+    location: 'Bengaluru, India',
     email: null,
     bio: 'Full-Stack Developer',
     github_id: 'subham2107',
